@@ -1,0 +1,10 @@
+{% if rarest_items %}
+    <ul>
+    {% for object in rarest_items%}
+        <li><a href="/admin/Monster_Hunter/object/{{ object.id|escape }}/change">{{ object.name|escape }}</a> </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no hunters.</p>
+{% endif %}
+

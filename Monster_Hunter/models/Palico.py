@@ -11,3 +11,15 @@ class Palico(models.Model):
 
     def __str__(self):
         return self.name
+
+class Palico_lent(models.Model):
+    delivery_date = models.DateTimeField()
+    palico= models.ForeignKey(Palico, on_delete=models.CASCADE)
+    hunter_lent = models.ForeignKey(Hunter, on_delete=models.CASCADE)
+    return_date = models.DateTimeField()
+
+    def __str__(self):
+        return "Lent "+ self.palico.name + " to " + self.hunter_lent.name
+
+    class Meta:
+        unique_together = [["delivery_date","palico_id"],["delivery_date","hunter_lent"]]

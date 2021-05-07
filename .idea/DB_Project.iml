@@ -26,6 +26,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/Monster_Hunter/templates" />
+        <option value="$MODULE_DIR$/Monster_Hunter/templates/Views_test" />
       </list>
     </option>
   </component>

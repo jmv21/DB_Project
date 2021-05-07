@@ -11,10 +11,11 @@ class Object(models.Model):
 
 class Collected_object(models.Model):
     object = models.ForeignKey(Object, on_delete=models.CASCADE)
-    region = models.CharField(max_length=80,default="Astera")
+    region = models.CharField(max_length=80, default="Astera")
 
     def __str__(self):
         return self.object.name
+
 
 class Merchantable_Object(models.Model):
     object = models.ForeignKey(Object, on_delete=models.CASCADE)
