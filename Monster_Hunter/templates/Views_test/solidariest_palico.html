@@ -1,0 +1,10 @@
+{% if solidariest_palico %}
+    <ul>
+    {% for palico in solidariest_palico%}
+        <li><a href="/admin/Monster_Hunter/object/{{ palico.id|escape }}/change">{{ palico.name|escape }}</a> </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No palico has been lent.</p>
+{% endif %}
+
