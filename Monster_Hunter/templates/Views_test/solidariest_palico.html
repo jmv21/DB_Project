@@ -1,12 +1,23 @@
 {% extends "Views_test/base.html" %}
+{% block  breadcrumb %}
+    <li class="breadcrumb-item active"> <a href={% url 'palicoes' %}>Palicoes </a>/ <a href={% url 'lend_register' %}>Lend Register </a>/ Solidariest Palico</li>
+{% endblock %}
+
 {% block content %}
-    {% if solidariest_palico %}
-    <ul>
-    {% for palico in solidariest_palico %}
-        <li><a href="/admin/Monster_Hunter/palico/{{ palico.id|escape }}/change">{{ palico.name|escape }}</a> </li>
-    {% endfor %}
-    </ul>
+{% if result %}
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                    The palico that has been lent for most time is<a href="/Monster_Hunter/palicos" > {{ result.0.0.name }} </a>, pendant {{ result.1.q }}
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
 {% else %}
-    <p>No palicoes has been lent or there are no palicoes.</p>
+    <p>No palicoes has been lent.</p>
 {% endif %}
+
 {% endblock content %}

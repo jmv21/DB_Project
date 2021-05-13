@@ -24,6 +24,8 @@ class Palico_lent(models.Model):
         return "Lent " + self.palico.name + " to " + self.hunter_lent.name
 
     def clean(self):
+        if(self.return_date is None or self.delivery_date is None):
+            return
         if (self.return_date <= self.delivery_date):
             raise ValidationError("Delivery date can't be less or equal to return date")
         borrows = Palico_lent.objects.filter(palico_id=self.palico.id)
@@ -31,6 +33,8 @@ class Palico_lent(models.Model):
             if (borrow.return_date > self.delivery_date or (
                     (self.delivery_date) < borrow.delivery_date > (self.delivery_date))):
                 raise ValidationError("Wrong Date")
+        if (self.palico.owner.id == self.hunter_lent.id):
+            raise ValidationError("Can't be lend to his owner")
 
     class Meta:
         unique_together = [["delivery_date", "palico_id"], ["delivery_date", "hunter_lent"]]

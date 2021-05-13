@@ -4,12 +4,13 @@ from Monster_Hunter.models.Object import Object
 from Monster_Hunter.models.Palico import Palico
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Inventory(models.Model):
     object = models.ForeignKey(Object, on_delete=models.CASCADE)
     hunter = models.ForeignKey(Hunter, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(999)])
 
     class Meta:
         ordering = ['hunter_id']
@@ -21,13 +22,13 @@ class Inventory(models.Model):
             raise ValidationError("Quantity must be at least 1, and less than 999 units")
 
     def __str__(self):
-        return "" + self.object.name + " " + self.hunter.name + " " + str(self.quantity)
+        return "" + self.object.name + " belong to " + self.hunter.name + ", quantity: " + str(self.quantity)
 
 
 class Recipes(models.Model):
-    object1 = models.ForeignKey(Object, on_delete=models.CASCADE, related_name='object1')
+    object1 = models.ForeignKey(Object, on_delete=models.CASCADE)
     object2 = models.ForeignKey(Object, on_delete=models.CASCADE, related_name='object2')
-    quantity = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(999)])
 
     def clean(self):
         if self.object1.id == self.object2.id:
@@ -36,7 +37,7 @@ class Recipes(models.Model):
             raise ValidationError("Quantity must be equal or greater than 1")
 
     def __str__(self):
-        return self.object1.name
+        return self.object1.name + " " + self.object2.name
 
     class Meta:
         ordering = ['object1']

@@ -1,0 +1,58 @@
+{% extends "Views_test/base.html" %}
+{% block  breadcrumb %}
+    <li class="breadcrumb-item active"> <a href={% url 'palicoes' %}>Palicoes </a>/ Lend Register</li>
+{% endblock %}
+
+{% block content %}
+{% if lend_register %}
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Lend Register</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <div class="input-group-append">
+                      <button type="button" class="btn btn-friend bg-gradient-success">Friendliest Palico</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+{#              <div class="card-body table-responsive p-0" style="height: 300px;">#}
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                        <th>Palicoes ID</th>
+                        <th>Name</th>
+                        <th>Hunter lent</th>
+                        <th>Delivery date</th>
+                        <th>Return date</th>
+                        <th>Owner</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for register in lend_register %}
+                    <tr>
+                        <td>{{register.palico.id}}</td>
+                        <td>{{register.palico.name}}</td>
+                        <td>{{register.hunter_lent.name}}</td>
+                        <td>{{register.delivery_date}}</td>
+                        <td>{{register.return_date}}</td>
+                        <td>{{register.palico.owner.name}}</td>
+                    </tr>
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+{% else %}
+    <p>No palicoes has been lent.</p>
+{% endif %}
+
+{% endblock content %}

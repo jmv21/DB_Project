@@ -16,7 +16,7 @@
 
                     <div class="input-group-append">
                         <h5>
-                      <button type="button" class="btn btn-monster bg-gradient-success">Most used parts</button>
+                      <button type="button" class="btn btn-monster bg-gradient-success">Most used</button>
                       </button>
                         </h5>
                     </div>
@@ -43,8 +43,7 @@
                         <td>{{monster.max_size}}</td>
                         <td>{{monster.rank}}</td>
                         <td>{{monster.combat_strategy}}</td>
-{#                      <td><span class="tag tag-success">Approved</span></td>#}
-                        <td><a href="/Monster_Hunter/most_resistant_armor/{{ monster.id }}" > Best armor against it </a></td>
+                        <td><a href="most_resistant_armor/{{ monster.id }}" > Best armor against it </a></td>
                     </tr>
                   {% endfor %}
 

@@ -14,11 +14,15 @@ from .models.Element import Elemental_resistance
 from .models.Others import Recipes
 from .models.Others import Reward_object
 from .models.Others import Inventory
-from .models.Element import Elemental_attack
+from .models.Element import Elemental_attack, Elemental_use
 
 
 # Register your models here.
+admin.site.site_header = "Administration site"
+admin.site.site_title = "Monster Hunter administration"
+admin.site.index_title = "Welcome to Monster Hunter's administration site"
 admin.site.register(Hunter)
+admin.site.register(Elemental_use)
 admin.site.register(Elemental_attack)
 admin.site.register(Palico)
 admin.site.register(Monster)

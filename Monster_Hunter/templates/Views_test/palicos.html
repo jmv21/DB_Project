@@ -14,8 +14,7 @@
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
                     <div class="input-group-append">
-                      <button type="button" class="btn btn-friend bg-gradient-success">Friendliest Palico</button>
-                      </button>
+                        <button type="button" class="btn btn-register bg-gradient-success">Lend Register</button>
                     </div>
                   </div>
                 </div>
@@ -42,8 +41,6 @@
                         <td>{{palico.combat_style}}</td>
                         <td>{{palico.rank}}</td>
                         <td>{{palico.owner}}</td>
-{#                      <td><span class="tag tag-success">Approved</span></td>#}
-{#                        <td><a href="/Monster_Hunter/inventory/{{ hunter.id }}" > Inventario </a></td>#}
                     </tr>
                   {% endfor %}
 
@@ -54,10 +51,10 @@
             </div>
             <!-- /.card -->
           </div>
-        </div>
+
 
 {% else %}
-    <p>No hay palicos que mostrar.</p>
+    <p>There are no palicoes to show.</p>
 {% endif %}
 
 {% endblock content %}

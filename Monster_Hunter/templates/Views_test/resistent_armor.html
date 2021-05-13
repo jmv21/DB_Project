@@ -1,0 +1,45 @@
+{% extends "Views_test/base.html" %}
+
+
+{% block  breadcrumb %}
+    <li class="breadcrumb-item active"> <a href={% url 'monsters' %}>Monsters </a> / Most resistant armor</li>
+{% endblock %}
+
+{% block content %}
+{% if armor_set %}
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Most resistant armorset</h3>
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Armor type</th>
+                      <th>Total Defense</th>
+                        <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for armor in armor_set %}
+                    <tr>
+                        <td> {{armor.1}} </td>
+                        <td>{{armor.2}}</td>
+                        <td>{{armor.4}}</td>
+                        <td><a href="/Monster_Hunter/objects/details/{{armor.1}}"> Object details </a> </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+{% else %}
+    <p>There are no complete armorset to show.</p>
+{% endif %}
+
+{% endblock content %}
