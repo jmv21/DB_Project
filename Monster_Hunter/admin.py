@@ -14,11 +14,12 @@ from .models.Element import Elemental_resistance
 from .models.Others import Recipes
 from .models.Others import Reward_object
 from .models.Others import Inventory
+from .models.Element import Elemental_attack
 
 
 # Register your models here.
-
 admin.site.register(Hunter)
+admin.site.register(Elemental_attack)
 admin.site.register(Palico)
 admin.site.register(Monster)
 admin.site.register(Object)

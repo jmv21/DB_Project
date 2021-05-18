@@ -1,0 +1,23 @@
+{% extends "Views_test/base.html" %}
+{% block  breadcrumb %}
+    <li class="breadcrumb-item active"> Monsters </li>
+{% endblock %}
+
+{% block content %}
+{% if monster %}
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                    The most used monster specie to fabricate equipment is <a href="/Monster_Hunter/monsters" > {{ monster.0.name }} </a>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+{% else %}
+    <p>No monsters has been used to make any equipment.</p>
+{% endif %}
+
+{% endblock content %}

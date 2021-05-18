@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "Views_test/base.html" %}
+{% block  breadcrumb %}
+    <li class="breadcrumb-item active"> Monsters </li>
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+{% if monsters %}
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Monsters</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+
+                    <div class="input-group-append">
+                        <h5>
+                      <button type="button" class="btn btn-monster bg-gradient-success">Most used parts</button>
+                      </button>
+                        </h5>
+                    </div>
+                  </div>
+                </div>
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Min size</th>
+                        <th>Max size</th>
+                        <th>Rank</th>
+                        <th>Combat strategy</th>
+                        <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for monster in monsters %}
+                    <tr>
+                        <td>{{monster.id}}</td>
+                        <td>{{monster.name}}</td>
+                        <td>{{monster.min_size}}</td>
+                        <td>{{monster.max_size}}</td>
+                        <td>{{monster.rank}}</td>
+                        <td>{{monster.combat_strategy}}</td>
+{#                      <td><span class="tag tag-success">Approved</span></td>#}
+                        <td><a href="/Monster_Hunter/most_resistant_armor/{{ monster.id }}" > Best armor against it </a></td>
+                    </tr>
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+{% else %}
+    <p>There are no monsters.</p>
+{% endif %}
+
+{% endblock content %}

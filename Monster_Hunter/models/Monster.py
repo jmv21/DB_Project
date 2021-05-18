@@ -4,8 +4,8 @@ from django.db import models
 
 class Monster(models.Model):
     name = models.CharField(max_length=50)
-    min_size = models.IntegerField()
-    max_size = models.IntegerField()
+    min_size = models.IntegerField(default=0)
+    max_size = models.IntegerField(default=10)
     combat_strategy = models.SmallIntegerField(default=1)
     rank = models.SmallIntegerField(default=1)
 

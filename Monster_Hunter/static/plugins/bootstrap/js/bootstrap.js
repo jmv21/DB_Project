@@ -324,7 +324,7 @@
 
     _proto._destroyElement = function _destroyElement(element) {
       $__default['default'](element).detach().trigger(EVENT_CLOSED).remove();
-    } // static
+    } // Static
     ;
 
     Alert._jQueryInterface = function _jQueryInterface(config) {
@@ -476,7 +476,7 @@
     _proto.dispose = function dispose() {
       $__default['default'].removeData(this._element, DATA_KEY$1);
       this._element = null;
-    } // static
+    } // Static
     ;
 
     Button._jQueryInterface = function _jQueryInterface(config, avoidTriggerChange) {
@@ -1072,7 +1072,7 @@
       if (isCycling) {
         this.cycle();
       }
-    } // static
+    } // Static
     ;
 
     Carousel._jQueryInterface = function _jQueryInterface(config) {
@@ -1445,7 +1445,7 @@
       if (triggerArray.length) {
         $__default['default'](triggerArray).toggleClass(CLASS_NAME_COLLAPSED, !isOpen).attr('aria-expanded', isOpen);
       }
-    } // static
+    } // Static
     ;
 
     Collapse._getTargetFromElement = function _getTargetFromElement(element) {
@@ -1841,7 +1841,7 @@
       }
 
       return _extends({}, popperConfig, this._config.popperConfig);
-    } // static
+    } // Static
     ;
 
     Dropdown._jQueryInterface = function _jQueryInterface(config) {
@@ -2568,7 +2568,7 @@
       var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
       document.body.removeChild(scrollDiv);
       return scrollbarWidth;
-    } // static
+    } // Static
     ;
 
     Modal._jQueryInterface = function _jQueryInterface(config, relatedTarget) {
@@ -3414,7 +3414,7 @@
       this.hide();
       this.show();
       this.config.animation = initConfigAnimation;
-    } // static
+    } // Static
     ;
 
     Tooltip._jQueryInterface = function _jQueryInterface(config) {
@@ -3594,7 +3594,7 @@
       if (tabClass !== null && tabClass.length > 0) {
         $tip.removeClass(tabClass.join(''));
       }
-    } // static
+    } // Static
     ;
 
     Popover._jQueryInterface = function _jQueryInterface(config) {
@@ -3900,7 +3900,7 @@
       }).forEach(function (node) {
         return node.classList.remove(CLASS_NAME_ACTIVE$2);
       });
-    } // static
+    } // Static
     ;
 
     ScrollSpy._jQueryInterface = function _jQueryInterface(config) {
@@ -4137,7 +4137,7 @@
       if (callback) {
         callback();
       }
-    } // static
+    } // Static
     ;
 
     Tab._jQueryInterface = function _jQueryInterface(config) {
@@ -4354,7 +4354,7 @@
     _proto._clearTimeout = function _clearTimeout() {
       clearTimeout(this._timeout);
       this._timeout = null;
-    } // static
+    } // Static
     ;
 
     Toast._jQueryInterface = function _jQueryInterface(config) {

@@ -1,10 +1,12 @@
-{% if solidariest_palico %}
+{% extends "Views_test/base.html" %}
+{% block content %}
+    {% if solidariest_palico %}
     <ul>
-    {% for palico in solidariest_palico%}
-        <li><a href="/admin/Monster_Hunter/object/{{ palico.id|escape }}/change">{{ palico.name|escape }}</a> </li>
+    {% for palico in solidariest_palico %}
+        <li><a href="/admin/Monster_Hunter/palico/{{ palico.id|escape }}/change">{{ palico.name|escape }}</a> </li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No palico has been lent.</p>
+    <p>No palicoes has been lent or there are no palicoes.</p>
 {% endif %}
-
+{% endblock content %}

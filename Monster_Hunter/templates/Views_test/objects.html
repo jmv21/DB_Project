@@ -15,8 +15,9 @@
                 <table class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Nombre</th>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th> </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -24,6 +25,7 @@
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td>{{ object.id }}</td>
                         <td>{{ object.name }}</td>
+                        <td><a href="/Monster_Hunter/objects/details/{{ object.id }}" > More info </a></td>
                     </tr>
                     <tr class="expandable-body d-none">
                       <td colspan="5">

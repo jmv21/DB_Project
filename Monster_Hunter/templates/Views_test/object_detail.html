@@ -1,0 +1,78 @@
+{% extends "Views_test/base.html" %}
+
+{% block  breadcrumb %}
+    <li class="breadcrumb-item active"> <a href={% url 'objects' %}>Objects</a> / Details</li>
+{% endblock %}
+
+{% block  content %}
+<div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Object details</h3>
+              </div>
+<div class="card-body">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                       <th>ID</th>
+                       <th>Nombre</th>
+                       <th>Type</th>
+                        {% if Reward_object%}
+                            <th>Monster id</th>
+                            <th>Quantity</th>
+                        {% elif Armor%}
+                            <th>Armor type</th>
+                            <th>Defense</th>
+                            <th>Elemental defense</th>
+                        {% elif Merchantable_Object%}
+                            <th>price</th>
+                        {% elif Collected_object%}
+                            <th>Region</th>
+                        {% elif Weapon%}
+                            <th>Weapon type</th>
+                            <th>Damage</th>
+                        {% endif %}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-widget="expandable-table" aria-expanded="false">
+                        <td>{{ object.id }}</td>
+                        <td>{{ object.name }}</td>
+                        <td>{{type}}</td>
+                        {% if Reward_object%}
+                            <td>{{object_info.monster_id}}</td>
+                            <td>{{ object_info.quantity }}</td>
+                        {% elif Armor%}
+                            <td>{{ object_info.armor_type }}</td>
+                            <td>{{ object_info.defense }}</td>
+                            {% if object_resistance %}
+                                <td>{{ object_resistance.element.name}}</td>
+                            {%  else %}
+                                 <td>{{ object_resistance}}</td>
+                            {% endif %}
+                        {% elif Merchantable_Object%}
+                            <td>{{object_info.price}}</td>
+                        {% elif Weapon%}
+                            <th>{{ object_info.weapon_type }}</th>
+                            <th>{{ object_info.damage }}</th>
+                        {% endif %}
+                    </tr>
+                    <tr class="expandable-body d-none">
+                      <td colspan="5">
+                        <p style="display: none;">
+                            {{ object.description }}
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+
+                </table>
+              </div>
+              <!-- ./card-header -->
+
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+{% endblock content %}

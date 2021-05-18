@@ -6,17 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Monster Hunter</title>
 
-
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{% static "plugins/fontawesome-free/css/all.min.css" %}">
-
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet"
           href="{% static "plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" %}">
     <link rel="stylesheet" href="{% static "dist/css/adminlte.min.css" %}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{% static "plugins/overlayScrollbars/css/OverlayScrollbars.min.css" %}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{% static "plugins/select2/css/select2.min.css" %}">
+    <link rel="stylesheet" href="{% static "plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" %}">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="{% static "plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" %}">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="{% static "plugins/dropzone/min/dropzone.min.css" %}">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{% static "plugins/daterangepicker/daterangepicker.css" %}">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="{% static "plugins/icheck-bootstrap/icheck-bootstrap.min.css" %}">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="{% static "plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css" %}">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" href="{% static "plugins/bs-stepper/css/bs-stepper.min.css" %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static "dist/css/adminlte.min.css" %}">
+
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -38,20 +54,6 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/admin/" class="nav-link">Administration</a>
-      </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-
-
-      <!-- Notifications Dropdown Menu -->
-
-
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
       </li>
     </ul>
   </nav>
@@ -96,7 +98,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                        <a href="/Monster_Hunter/monsters" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Monsters
@@ -123,7 +125,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                        <a href="/Monster_Hunter/elements" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Elements
@@ -138,6 +140,7 @@
         <!-- /.sidebar -->
     </aside>
 
+    {% block content_wraper %}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -168,6 +171,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+   {% endblock content_wraper %}
     <footer class="main-footer">
         <strong>Copyright &copy; 2020-2021.</strong>
         All rights reserved.
@@ -192,6 +196,17 @@
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
+<!-- Select2 -->
+<script src="{% static "plugins/select2/js/select2.full.min.js" %}"></script>
+<!-- dropzonejs -->
+<script src="{% static "plugins/dropzone/min/dropzone.min.js" %}"></script>
+<!-- InputMask -->
+<script src="{% static "plugins/moment/moment.min.js" %}"></script>
+<script src="{% static "plugins/inputmask/jquery.inputmask.min.js" %}"></script>
+<!-- Bootstrap switch -->
+<script src="{% static "/plugins/bootstrap-switch/js/bootstrap-switch.min.js" %}"></script>
+<!-- bootstrap color picker -->
+<script src="{% static "plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js" %}"></script>
 <!-- Bootstrap 4 -->
 <script src="{% static "plugins/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
 <!-- overlayScrollbars -->
@@ -200,6 +215,13 @@
 <script src="{% static "dist/js/adminlte.js" %}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{% static "dist/js/demo.js" %}"></script>
-
+<!-- Bootstrap 4 -->
+<script src="{% static "plugins/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{% static "plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js" %}"></script>
+<!-- date-range-picker -->
+<script src="{% static "plugins/daterangepicker/daterangepicker.js" %}"></script>
+<!-- BS-Stepper -->
+<script src="{% static "plugins/bs-stepper/js/bs-stepper.min.js" %}"></script>
 </body>
 </html>
