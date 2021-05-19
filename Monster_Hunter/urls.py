@@ -3,10 +3,17 @@ from . import views
 
 urlpatterns = [
 
-path('', views.hunters, name='hunters'),
+    # ex: /Monster_Hunter/5/
+    path('', views.home, name='home'),
 
-# ex: /Monster_Hunter/5/
-path('<int:number>/', views.rarest_objects, name='rarest_objects'),
+    path('<int:number>/', views.rarest_objects, name='rarest_objects'),
 
-path('solidariest/', views.solidariest_palico, name='solidariest_palico'),
+    path('solidariest/', views.solidariest_palico, name='solidariest_palico'),
+
+    path('hunters/', views.hunters, name='hunters'),
+
+    path('palicos/', views.palicos, name='palicos'),
+
+    path('objects/', views.objects, name='objects'),
+
 ]

@@ -1,10 +1,14 @@
-{% if rarest_items %}
+
+
+{% extends "Views_test/base.html" %}
+{% block content %}
+    {% if rarest_items %}
     <ul>
-    {% for object in rarest_items%}
+    {% for object in rarest_items %}
         <li><a href="/admin/Monster_Hunter/object/{{ object.id|escape }}/change">{{ object.name|escape }}</a> </li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>There are no hunters.</p>
+    <p>There are no objects.</p>
 {% endif %}
-
+{% endblock content %}

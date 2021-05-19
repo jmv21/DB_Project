@@ -1,0 +1,65 @@
+{% extends "Views_test/base.html" %}
+{% block  breadcrumb %}
+    <li class="breadcrumb-item active"> Palicoes</li>
+{% endblock %}
+
+{% block content %}
+{% if palicos %}
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Palicos</h3>
+
+{#                <div class="card-tools">#}
+{#                  <div class="input-group input-group-sm" style="width: 150px;">#}
+{#                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">#}
+{##}
+{#                    <div class="input-group-append">#}
+{#                      <button type="submit" class="btn btn-default">#}
+{#                        <i class="fas fa-search"></i>#}
+{#                      </button>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+              <!-- /.card-header -->
+{#              <div class="card-body table-responsive p-0" style="height: 300px;">#}
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Experience Level</th>
+                        <th>Combat Style</th>
+                        <th>Rank</th>
+                        <th>Owner</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for palico in palicos %}
+                    <tr>
+                        <td>{{palico.id}}</td>
+                        <td>{{palico.name}}</td>
+                        <td>{{palico.experience_level}}</td>
+                        <td>{{palico.combat_style}}</td>
+                        <td>{{palico.rank}}</td>
+                        <td>{{palico.owner}}</td>
+{#                      <td><span class="tag tag-success">Approved</span></td>#}
+{#                        <td><a href="/Monster_Hunter/inventory/{{ hunter.id }}" > Inventario </a></td>#}
+                    </tr>
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+{% else %}
+    <p>No hay palicos que mostrar.</p>
+{% endif %}
+
+{% endblock content %}

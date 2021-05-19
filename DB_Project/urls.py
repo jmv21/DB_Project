@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+import Monster_Hunter.views
+
 urlpatterns = [
     path('Monster_Hunter/', include('Monster_Hunter.urls')),
+    path('', Monster_Hunter.views.home, name='home'),
     path('admin/', admin.site.urls),
 ]
