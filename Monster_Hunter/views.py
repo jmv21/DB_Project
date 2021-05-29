@@ -318,12 +318,14 @@ def resistent_armor(request, monster):
 
 
 def monsters_to_kill(request, equipment_id):
-    # template = loader.get_template('Views_test/resistent_armor.html')
+    template = loader.get_template('Views_test/monster_to_kill.html')
+    if(Object.objects.filter(id=equipment_id).count() ==0 or Object.objects.filter(id=equipment_id).values_list('recipes__object2')[0][0] is None):
+        return HttpResponse(template.render({}, request))
 
     # We select the monster who drops the material and the highest value of the amount_needed/amount_rewarded and group by monster_id
     query = Object.objects.filter(id=equipment_id).values('recipes__object2__reward_object__monster_id').annotate(
         q=(1.0 * F('recipes__quantity') / F('recipes__object2__reward_object__quantity')), piece_id=F('recipes__object2')
-        , monster_id='recipes__object2__reward_object__monster_id').order_by('q')
+        , monster_id=F('recipes__object2__reward_object__monster_id')).order_by('q')
 
     monster_id = list(query.values_list('recipes__object2__reward_object__monster_id', flat=True))
 
@@ -361,6 +363,11 @@ def monsters_to_kill(request, equipment_id):
     result = []
     for i in range(len(monster_id)):
         result.append((Monster.objects.get(id=monster_id[i]), q[i]))
+
+    context = {
+        'monsters': result
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def lend_register(request):

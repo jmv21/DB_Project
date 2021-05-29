@@ -25,6 +25,7 @@
                             <th>Armor type</th>
                             <th>Defense</th>
                             <th>Elemental defense</th>
+                            <th></th>
                         {% elif Merchantable_Object%}
                             <th>price</th>
                         {% elif Collected_object%}
@@ -32,6 +33,7 @@
                         {% elif Weapon%}
                             <th>Weapon type</th>
                             <th>Damage</th>
+                            <th></th>
                         {% endif %}
                     </tr>
                   </thead>
@@ -51,11 +53,13 @@
                             {%  else %}
                                  <td>{{ object_resistance}}</td>
                             {% endif %}
+                            <th><a href="/Monster_Hunter/monster_to_kill/{{ object.id }}" >Needed monsters</a></th>
                         {% elif Merchantable_Object%}
                             <td>{{object_info.price}}</td>
                         {% elif Weapon%}
                             <th>{{ object_info.weapon_type }}</th>
                             <th>{{ object_info.damage }}</th>
+                            <th><a href="/Monster_Hunter/monster_to_kill/{{ object.id }}" >Needed monsters</a></th>
                         {% endif %}
                     </tr>
                     <tr class="expandable-body d-none">

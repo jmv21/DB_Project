@@ -31,7 +31,7 @@ urlpatterns = [
 
     path('monsters/most_resistant_armor/<int:monster>/', views.resistent_armor, name='resistent_armor'),
 
-    path('<int:monster_id>/', views.resistent_armor, name='resistent_armor'),
+    path('monster_to_kill/<int:equipment_id>/', views.monsters_to_kill, name='resistent_armor'),
 
     path('palicoes/lend_register/', views.lend_register, name='lend_register')
 ]

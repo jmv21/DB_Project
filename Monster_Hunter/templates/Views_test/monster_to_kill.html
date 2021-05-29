@@ -1,0 +1,29 @@
+{% extends "Views_test/base.html" %}
+{% block  breadcrumb %}
+    <li class="breadcrumb-item active"> Equipment </li>
+{% endblock %}
+
+{% block content %}
+{% if monsters %}
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                   To make the equipment, is needed to kill:
+
+              </div>
+                <div class="card-body">
+                    {% for monster in monsters  %}
+                    <ul>{{ monster.0.name }}, quantity: {{ monster.1 }}</ul>
+                    {% endfor %}
+                </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+{% else %}
+    <p>There are no recipe to this equipment</p>
+{% endif %}
+
+{% endblock content %}
