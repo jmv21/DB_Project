@@ -483,19 +483,4 @@ def lend_register(request):
     }
     return HttpResponse(template.render(context, request))
 
-def recipe(request, id):
-    template = loader.get_template('Views_test/recipe.html')
 
-    armor_or_weapon = Q(armor__armor_type__isnull=False) | Q(weapon__damage__isnull=False)
-
-    equipment = Object.objects.filter(armor_or_weapon, id=id)
-    if(equipment.count()>0):
-
-    else:
-        recipe=equipment
-
-
-    context = {
-        'recipe': recipe
-    }
-    return HttpResponse(template.render(context, request))
