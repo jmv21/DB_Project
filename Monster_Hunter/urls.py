@@ -33,5 +33,7 @@ urlpatterns = [
 
     path('monster_to_kill/<int:equipment_id>/', views.monsters_to_kill, name='resistent_armor'),
 
-    path('palicoes/lend_register/', views.lend_register, name='lend_register')
+    path('palicoes/lend_register/', views.lend_register, name='lend_register'),
+
+    path('object/recipe/<int:id>', views.lend_register, name='lend_register'),
 ]
