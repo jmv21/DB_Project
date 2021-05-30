@@ -172,7 +172,6 @@ def elemental_resistant_armorset(request, elements):
     armor_inv = inv.filter(object__in=list_armors, hunter__in=list_hunters)
 
     result = []
-    armorsets = []
 
     for i in list_hunters:
         # Make a list of all armor in hunter i inventory
@@ -485,10 +484,11 @@ def lend_register(request):
 
 def recipe(request, id):
     template = loader.get_template('Views_test/recipe.html')
-
+    url = request.build_absolute_uri()
     recipe = Recipes.objects.filter(object1=id)
 
     context = {
-        'recipe': recipe
+        'recipe': recipe,
+        'url': url
     }
     return HttpResponse(template.render(context, request))
