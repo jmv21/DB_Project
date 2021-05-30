@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "Views_test/base.html" %}
+{% block  breadcrumb %}
+    <li class="breadcrumb-item active"> Equipment </li>
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+{% if recipe %}
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                   To make the equipment, is needed:
+              </div>
+                <div class="card-body">
+                    {% for piece in recipe  %}
+                        <ul><a href=href="/Monster_Hunter/objects/details/{{ piece.object2.name }}"></a>, quantity: {{ piece.quantity }}</ul>
+                    {% endfor %}
+                <a href="/Monster_Hunter/monster_to_kill/{{ recipe.0.object.id }}" >Needed monsters</a>
+                </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+{% else %}
+    <p>There are no recipe to this equipment</p>
+{% endif %}
+
+{% endblock content %}

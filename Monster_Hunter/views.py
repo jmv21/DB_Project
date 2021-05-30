@@ -483,4 +483,12 @@ def lend_register(request):
     }
     return HttpResponse(template.render(context, request))
 
+def recipe(request, id):
+    template = loader.get_template('Views_test/recipe.html')
 
+    recipe = Recipes.objects.filter(object1=id)
+
+    context = {
+        'recipe': recipe
+    }
+    return HttpResponse(template.render(context, request))
