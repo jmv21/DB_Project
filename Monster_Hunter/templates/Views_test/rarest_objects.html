@@ -1,45 +1,36 @@
-
-
-
-{% extends "Views_test/base.html" %}
-{% block  breadcrumb %}
-    <li class="breadcrumb-item active"> Hunters </li>
+{% extends 'Views_test/base_tables.html' %}
+{% block header %}
+    <h1 class="card-title"><big>Rarest Objects </big></h1>
 {% endblock %}
-
-{% block content %}
 {% if rarest_items %}
-    <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Rarest objects</h3>
-                <table class="table table-head-fixed text-nowrap">
-                  <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for object in rarest_items %}
-                    <tr>
-                        <td>{{object.0.id}}</td>
-                        <td>{{object.0.name}}</td>
-                        <td>{{object.1}}</td>
-                    </tr>
-                  {% endfor %}
+    <thead>
+    {% block columns %}
+        <tr>
+            <th scope="col"><strong>ID</strong></th>
+            <th scope="col"><strong>Name</strong></th>
+            <th scope="col"><strong>Quantity</strong></th>
+            <th></th>
+        </tr>
 
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
+    {% endblock %}
+    </thead>
+
+    <tbody>
+    {% block rows %}
+        {% for object in rarest_items %}
+            <tr>
+                <td>{{ object.0.id }}</td>
+                <td>{{ object.0.name }}</td>
+                <td>{{ object.1 }}</td>
+                <td><a href="/Monster_Hunter/objects/details/{{ object.0.id }}"> More info </a></td>
+            </tr>
+        {% endfor %}
+
+    {% endblock %}
+
+
+    <tbody>
 {% else %}
     <p>There are no objects in the inventory of any hunter.</p>
 {% endif %}
 
-{% endblock content %}

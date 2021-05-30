@@ -1,58 +1,54 @@
-{% extends "Views_test/base.html" %}
+{% extends 'Views_test/base_tables.html' %}
 {% block  breadcrumb %}
-    <li class="breadcrumb-item active"> <a href={% url 'palicoes' %}>Palicoes </a>/ Lend Register</li>
+    <li class="breadcrumb-item active"><a href={% url 'palicoes' %}>Palicoes </a>/ Lend Register</li>
 {% endblock %}
 
-{% block content %}
-{% if lend_register %}
-    <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Lend Register</h3>
+{% block header %}
+    <h6 class="card-title"><big>Palicoes</big></h6>
+{% endblock %}
 
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <div class="input-group-append">
-                      <button type="button" class="btn btn-friend bg-gradient-success">Friendliest Palico</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.card-header -->
-{#              <div class="card-body table-responsive p-0" style="height: 300px;">#}
-                <table class="table table-head-fixed text-nowrap">
-                  <thead>
-                    <tr>
-                        <th>Palicoes ID</th>
-                        <th>Name</th>
-                        <th>Hunter lent</th>
-                        <th>Delivery date</th>
-                        <th>Return date</th>
-                        <th>Owner</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for register in lend_register %}
-                    <tr>
-                        <td>{{register.palico.id}}</td>
-                        <td>{{register.palico.name}}</td>
-                        <td>{{register.hunter_lent.name}}</td>
-                        <td>{{register.delivery_date}}</td>
-                        <td>{{register.return_date}}</td>
-                        <td>{{register.palico.owner.name}}</td>
-                    </tr>
-                  {% endfor %}
-
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+{% block add_widgets %}
+    <div class="card-tools">
+        <div class="input-group input-group-sm" style="width: 150px;">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-friend bg-gradient-success">Friendliest
+                    Palico
+                </button>
             </div>
-            <!-- /.card -->
-          </div>
+        </div>
+    </div>
+{% endblock add_widgets %}
+
+{% if lend_register %}
+    <thead>
+    {% block columns %}
+        <tr>
+            <th scope="col"><strong>Palico's ID</strong></th>
+            <th scope="col"><strong>Name</strong></th>
+            <th scope="col"><strong>Hunter lent</strong></th>
+            <th scope="col"><strong>Delivery date</strong></th>
+            <th scope="col"><strong>Return date</strong></th>
+            <th scope="col"><strong>Owner</strong></th>
+            {#            <th scope="col"></th>#}
+        </tr>
+    {% endblock %}
+    </thead>
+
+    <tbody>
+    {% block rows %}
+        {% for register in lend_register %}
+            <tr>
+                <td>{{ register.palico.id }}</td>
+                <td>{{ register.palico.name }}</td>
+                <td>{{ register.hunter_lent.name }}</td>
+                <td>{{ register.delivery_date }}</td>
+                <td>{{ register.return_date }}</td>
+                <td>{{ register.palico.owner.name }}</td>
+            </tr>
+        {% endfor %}
+    {% endblock %}
+    <tbody>
 {% else %}
-    <p>No palicoes has been lent.</p>
+    <p>No palico has been lent</p>
 {% endif %}
 
-{% endblock content %}

@@ -1,0 +1,77 @@
+{% extends 'Views_test/base.html' %}
+{% load static %}
+
+{% block add_css %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{% static "plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" %}">
+    <link rel="stylesheet" href="{% static "plugins/datatables-responsive/css/responsive.bootstrap4.min.css" %}">
+    <link rel="stylesheet" href="{% static "plugins/datatables-buttons/css/buttons.bootstrap4.min.css" %}">
+{% endblock add_css %}
+
+{% block add_style %}
+{% endblock add_style %}
+
+{% block content %}
+
+    <!-- /.card-header -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            {% block header %}
+                            <h3 class="card-title"></h3>
+                            {% endblock header %}
+                            {% block add_widgets %}
+                            {% endblock add_widgets %}
+                        </div>
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                {% block columns %}
+                                {% endblock %}
+                                </thead>
+
+                                <tbody>
+                                {% block rows %}
+                                {% endblock %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+{% endblock content %}
+
+
+{% block add_js %}
+    <!-- DataTables  & Plugins -->
+    <script src="{% static "plugins/DataTables-1.10.24/js/jquery.dataTables.js" %}"></script>
+    <script src="{% static "plugins/DataTables-1.10.24/js/dataTables.bootstrap4.js" %}"></script>
+
+    <script type="application/javascript">
+        $(function () {
+            $('#example1').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+{% endblock add_js %}
+
+{% block add_script %}
+{% endblock add_script %}

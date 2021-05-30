@@ -1,60 +1,50 @@
-{% extends "Views_test/base.html" %}
+{% extends 'Views_test/base_tables.html' %}
 {% block  breadcrumb %}
     <li class="breadcrumb-item active"> Palicoes</li>
 {% endblock %}
 
-{% block content %}
-{% if palicos %}
-    <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Palicos</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-register bg-gradient-success">Lend Register</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.card-header -->
-{#              <div class="card-body table-responsive p-0" style="height: 300px;">#}
-                <table class="table table-head-fixed text-nowrap">
-                  <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Experience Level</th>
-                        <th>Combat Style</th>
-                        <th>Rank</th>
-                        <th>Owner</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for palico in palicos %}
-                    <tr>
-                        <td>{{palico.id}}</td>
-                        <td>{{palico.name}}</td>
-                        <td>{{palico.experience_level}}</td>
-                        <td>{{palico.combat_style}}</td>
-                        <td>{{palico.rank}}</td>
-                        <td>{{palico.owner}}</td>
-                    </tr>
-                  {% endfor %}
-
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+{% block header %}
+    <h5 class="card-title">Palicoes</h5>
+{% endblock %}
+{% block add_widgets %}
+    <div class="card-tools">
+        <div class="input-group input-group-sm" style="width: 150px;">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-register bg-gradient-success">Lend Register</button>
             </div>
-            <!-- /.card -->
-          </div>
+        </div>
+    </div>
+{% endblock add_widgets %}
+{% if palicos %}
+    <thead>
+    {% block columns %}
+        <tr>
+            <th scope="col"><strong>ID</strong></th>
+            <th scope="col"><strong>Name</strong></th>
+            <th scope="col"><strong>Experience Level</strong></th>
+            <th scope="col"><strong>Combat Style</strong></th>
+            <th scope="col"><strong>Rank</strong></th>
+            <th scope="col"><strong>Owner</strong></th>
+            {#            <th scope="col"></th>#}
+        </tr>
+    {% endblock %}
+    </thead>
 
-
+    <tbody>
+    {% block rows %}
+        {% for palico in palicos %}
+            <tr>
+                <td>{{ palico.id }}</td>
+                <td>{{ palico.name }}</td>
+                <td>{{ palico.experience_level }}</td>
+                <td>{{ palico.combat_style }}</td>
+                <td>{{ palico.rank }}</td>
+                <td>{{ palico.owner }}</td>
+            </tr>
+        {% endfor %}
+    {% endblock %}
+    <tbody>
 {% else %}
     <p>There are no palicoes to show.</p>
 {% endif %}
 
-{% endblock content %}

@@ -1,6 +1,7 @@
 {% extends "Views_test/base.html" %}
 {% block  breadcrumb %}
-    <li class="breadcrumb-item active"> Monsters </li>
+    <li class="breadcrumb-item active"><a href="{% url 'monsters' %}">Monsters</a> </li>
+    <li class="breadcrumb-item active"> Most Used </li>
 {% endblock %}
 
 {% block content %}

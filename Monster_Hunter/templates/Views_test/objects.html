@@ -1,53 +1,37 @@
-{% extends "Views_test/base.html" %}
-
-{% block  breadcrumb %}
-    <li class="breadcrumb-item active"> Objects</li>
+{% extends 'Views_test/base_tables.html' %}
+{% block header %}
+    <h1 class="card-title"><big>Objects</big></h1>
 {% endblock %}
+{% block  breadcrumb %}
+    <li class="breadcrumb-item text-light">Objects</li>
+{% endblock %}
+{% if objects %}
+    <thead>
+    {% block columns %}
+        <tr>
+            <th scope="col"><strong>ID</strong></th>
+            <th scope="col"><strong>Name</strong></th>
+            <th></th>
+        </tr>
 
-{% block  content %}
-<div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Objects</h3>
-              </div>
-<div class="card-body">
-                <table class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th> </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for object in objects %}
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                        <td>{{ object.id }}</td>
-                        <td>{{ object.name }}</td>
-                        <td><a href="/Monster_Hunter/objects/details/{{ object.id }}" > More info </a></td>
-                    </tr>
-                    <tr class="expandable-body d-none">
-                      <td colspan="5">
-                        <p style="display: none;">
-                            {{ object.description }}
-                        </p>
-                      </td>
-                    </tr>
-                  {% endfor %}
-                  </tbody>
+    {% endblock %}
+    </thead>
 
-                </table>
-              </div>
+    <tbody>
+    {% block rows %}
+        {% for object in objects %}
+            <tr>
+                <td>{{ object.id }}</td>
+                <td>{{ object.name }}</td>
+                <td><a href="/Monster_Hunter/objects/details/{{ object.id }}"> More info </a></td>
+            </tr>
+        {% endfor %}
+
+    {% endblock %}
 
 
-              <!-- ./card-header -->
+    <tbody>
+{% else %}
+    <p>There are no objects to show.</p>
+{% endif %}
 
-                  </tbody>
-                </table>
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
-{% endblock content %}

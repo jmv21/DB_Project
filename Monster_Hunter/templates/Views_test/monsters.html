@@ -1,61 +1,53 @@
-{% extends "Views_test/base.html" %}
+{% extends 'Views_test/base_tables.html' %}
 {% block  breadcrumb %}
-    <li class="breadcrumb-item active"> Monsters </li>
+    <li class="breadcrumb-item active"> Monsters</li>
 {% endblock %}
 
-{% block content %}
-{% if monsters %}
-    <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Monsters</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-
-                    <div class="input-group-append">
-                        <h5>
-                      <button type="button" class="btn btn-monster bg-gradient-success">Most used</button>
-                      </button>
-                        </h5>
-                    </div>
-                  </div>
-                </div>
-                <table class="table table-head-fixed text-nowrap">
-                  <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Min size</th>
-                        <th>Max size</th>
-                        <th>Rank</th>
-                        <th>Combat strategy</th>
-                        <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for monster in monsters %}
-                    <tr>
-                        <td>{{monster.id}}</td>
-                        <td>{{monster.name}}</td>
-                        <td>{{monster.min_size}}</td>
-                        <td>{{monster.max_size}}</td>
-                        <td>{{monster.rank}}</td>
-                        <td>{{monster.combat_strategy}}</td>
-                        <td><a href="most_resistant_armor/{{ monster.id }}" > Best armor against it </a></td>
-                    </tr>
-                  {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+{% block header %}
+    <h5 class="card-title">Monsters</h5>
+{% endblock %}
+{% block add_widgets %}
+    <div class="card-tools">
+        <div class="input-group input-group-sm" style="width: 150px;">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-monster bg-gradient-success">Most used
+                </button>
             </div>
-            <!-- /.card -->
-          </div>
         </div>
+    </div>
+    <!-- Card-Tools-->
+{% endblock add_widgets %}
+{% if monsters %}
+    <thead>
+    {% block columns %}
+        <tr>
+            <th scope="col"><strong>ID</strong></th>
+            <th scope="col"><strong>Name</strong></th>
+            <th scope="col"><strong>Min size</strong></th>
+            <th scope="col"><strong>Max size</strong></th>
+            <th scope="col"><strong>Rank</strong></th>
+            <th scope="col"><strong>Combat strategy</strong></th>
+            <th scope="col"></th>
+        </tr>
+    {% endblock %}
+    </thead>
+
+    <tbody>
+    {% block rows %}
+        {% for monster in monsters %}
+            <tr>
+                <td>{{ monster.id }}</td>
+                <td>{{ monster.name }}</td>
+                <td>{{ monster.min_size }}</td>
+                <td>{{ monster.max_size }}</td>
+                <td>{{ monster.rank }}</td>
+                <td>{{ monster.combat_strategy }}</td>
+                <td><a href="most_resistant_armor/{{ monster.id }}"> Best armor against it </a></td>
+            </tr>
+        {% endfor %}
+    {% endblock %}
+    <tbody>
 {% else %}
-    <p>There are no monsters.</p>
+    <p>There are no monsters to show.</p>
 {% endif %}
 
-{% endblock content %}

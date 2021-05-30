@@ -1,60 +1,41 @@
-
-
-
-{% extends "Views_test/base.html" %}
-{% block  breadcrumb %}
-    <li class="breadcrumb-item active"> Hunters </li>
+{% extends 'Views_test/base_tables.html' %}
+{% block header %}
+    <h1 class="card-title"><big>{{ hunter.name }} inventory </big></h1>
 {% endblock %}
 
-{% block content %}
+{% block  breadcrumb %}
+    <li class="breadcrumb-item"><a href={% url 'hunters' %}>Hunters</a></li>
+    <li class="breadcrumb-item text-light">Inventory</li>
+{% endblock %}
 {% if inventory %}
-    <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">{{ hunter.name }}'s inventory</h3>
+    <thead>
+    {% block columns %}
+        <tr>
+            <th scope="col"><strong>ID</strong></th>
+            <th scope="col"><strong>Name</strong></th>
+            <th scope="col"><strong>Quantity</strong></th>
+            <th></th>
+        </tr>
 
-{#                <div class="card-tools">#}
-{#                  <div class="input-group input-group-sm" style="width: 150px;">#}
-{#                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">#}
-{##}
-{#                    <div class="input-group-append">#}
-{#                      <button type="submit" class="btn btn-default">#}
-{#                        <i class="fas fa-search"></i>#}
-{#                      </button>#}
-{#                    </div>#}
-{#                  </div>#}
-{#                </div>#}
-{#              </div>#}
-              <!-- /.card-header -->
-{#              <div class="card-body table-responsive p-0" style="height: 300px;">#}
-                <table class="table table-head-fixed text-nowrap">
-                  <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for object in inventory %}
-                    <tr>
-                        <td>{{object.0.id}}</td>
-                        <td>{{object.0.name}}</td>
-                        <td>{{object.1.quantity}}</td>
-                    </tr>
-                  {% endfor %}
+    {% endblock %}
+    </thead>
 
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
+    <tbody>
+    {% block rows %}
+        {% for object in inventory %}
+            <tr>
+                <td>{{ object.0.id }}</td>
+                <td>{{ object.0.name }}</td>
+                <td>{{ object.1.quantity }}</td>
+                <td><a href="/Monster_Hunter/objects/details/{{ object.0.id }}"> More info </a></td>
+            </tr>
+        {% endfor %}
+
+    {% endblock %}
+
+
+    <tbody>
 {% else %}
-    <p>There are no objects in the inventory this hunter.</p>
+    <p>This hunter does not own any object</p>
 {% endif %}
 
-{% endblock content %}
