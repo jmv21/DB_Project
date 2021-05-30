@@ -53,13 +53,13 @@
                             {%  else %}
                                  <td>{{ object_resistance}}</td>
                             {% endif %}
-                            <th><a href="/Monster_Hunter/'object/recipe/{{ object.id }}'" >Recipe</a></th>
+                            <th><a href="/Monster_Hunter/object/recipe/{{ object.id }}" >Recipe</a></th>
                         {% elif Merchantable_Object%}
                             <td>{{object_info.price}}</td>
                         {% elif Weapon%}
                             <th>{{ object_info.weapon_type }}</th>
                             <th>{{ object_info.damage }}</th>
-                            <th><a href="/Monster_Hunter/'object/recipe/{{ object.id }}'" >Recipe</a></th>
+                            <th><a href="/Monster_Hunter/object/recipe/{{ object.id }}" >Recipe</a></th>
                         {% endif %}
                     </tr>
                     <tr class="expandable-body d-none">

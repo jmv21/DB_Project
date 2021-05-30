@@ -35,5 +35,5 @@ urlpatterns = [
 
     path('palicoes/lend_register/', views.lend_register, name='lend_register'),
 
-    path('object/recipe/<int:id>', views.lend_register, name='lend_register'),
+    path('object/recipe/<int:id>', views.recipe, name='lend_register'),
 ]
