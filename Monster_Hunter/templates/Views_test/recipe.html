@@ -1,30 +1,43 @@
 {% extends "Views_test/base.html" %}
 {% block  breadcrumb %}
     <li class="breadcrumb-item active"><a href="{{ url }}"> Objects</a></li>
-    <li class="breadcrumb-item active"> Equipment </li>
+    <li class="breadcrumb-item active"> Equipment</li>
 {% endblock %}
 
 {% block content %}
-{% if recipe %}
-    <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                   To make the equipment, is needed:
-              </div>
-                <div class="card-body">
-                    {% for piece in recipe  %}
-                        <ul> > <a href="/Monster_Hunter/objects/details/{{ piece.object2.id }}"> {{ piece.object2.name }}</a>, quantity: {{ piece.quantity }}</ul>
-                    {% endfor %}
-                <a href="/Monster_Hunter/monster_to_kill/{{ recipe.0.object1.id }}" >Needed monsters</a>
+    {% if recipe %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        To make the equipment, is needed:
+                    </div>
+                    <div class="card-body">
+                        {% for piece in recipe %}
+                            <ul> > <a
+                                    href="/Monster_Hunter/objects/details/{{ piece.object2.id }}"> {{ piece.object2.name }}</a>,
+                                quantity: {{ piece.quantity }}</ul>
+                        {% endfor %}
+                        <a href="/Monster_Hunter/monster_to_kill/{{ recipe.0.object1.id }}">Needed monsters</a>
+                    </div>
+                    <!-- /.card-body -->
                 </div>
-              <!-- /.card-body -->
+                <!-- /.card -->
             </div>
-            <!-- /.card -->
-          </div>
         </div>
-{% else %}
-    <p>There are no recipe to this equipment</p>
-{% endif %}
+    {% else %}
 
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <p>There are no recipe to this equipment</p>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+
+    {% endif %}
 {% endblock content %}

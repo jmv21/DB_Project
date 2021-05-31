@@ -1,14 +1,15 @@
 from django.db import models
 from Monster_Hunter.models.Hunter import Hunter
 from django.core.exceptions import ValidationError
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Palico(models.Model):
     owner = models.ForeignKey(Hunter, blank=True, null=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=50)
-    experience_level = models.IntegerField(default=0)
-    combat_style = models.SmallIntegerField(default=0)
-    rank = models.SmallIntegerField(default=0)
+    experience_level = models.IntegerField(default=0,validators=[MinValueValidator(0), MaxValueValidator(99)])
+    combat_style = models.SmallIntegerField(default=0, validators=[MinValueValidator(1)])
+    rank = models.SmallIntegerField(default=0,validators=[MinValueValidator(0), MaxValueValidator(50)])
 
     def __str__(self):
         return self.name
@@ -17,7 +18,7 @@ class Palico(models.Model):
 class Palico_lent(models.Model):
     delivery_date = models.DateTimeField()
     palico = models.ForeignKey(Palico, on_delete=models.CASCADE)
-    hunter_lent = models.ForeignKey(Hunter, on_delete=models.CASCADE)
+    hunter_lent = models.ForeignKey(Hunter,null=False, blank=False, on_delete=models.CASCADE)
     return_date = models.DateTimeField()
 
     def __str__(self):

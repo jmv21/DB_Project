@@ -1,19 +1,10 @@
 from django.contrib import admin
 from .models.Hunter import Hunter
-from .models.Palico import Palico
-from .models.Palico import Palico_lent
+from .models.Palico import Palico, Palico_lent
 from .models.Monster import Monster
-from .models.Object import Object
-from .models.Object import Collected_object
-from .models.Object import Merchantable_Object
-from .models.Object import Armor
-from .models.Object import Weapon
-from .models.Element import Element
-from .models.Element import Elemental_defense
-from .models.Element import Elemental_resistance
-from .models.Others import Recipes
-from .models.Others import Reward_object
-from .models.Others import Inventory
+from .models.Object import Object, Collected_object, Armor, Weapon, Merchantable_Object
+from .models.Element import Element, Elemental_resistance, Elemental_defense
+from .models.Others import Recipes, Reward_object, Inventory
 from .models.Element import Elemental_attack, Elemental_use
 
 

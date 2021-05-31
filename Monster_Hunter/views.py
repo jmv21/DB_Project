@@ -158,6 +158,8 @@ def elemental_resistant_armorset(request, elements):
 
     # Get a list of the requested elements
     list_elem = list(elem.filter(name__in=tokens).values_list("id", flat=True))
+    if(len(list_elem) != len(tokens) ):
+        return HttpResponse((loader.get_template('Views_test/error.html')).render({}, request))
     # A query for al object in the Elemental_defense table
     elem_def = Elemental_defense.objects.filter(element__in=list_elem)
 

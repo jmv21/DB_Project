@@ -1,59 +1,72 @@
 {% extends "Views_test/base.html" %}
 {% block  breadcrumb %}
-    <li class="breadcrumb-item active"><a href="{% url 'elements' %}">Elements</a> </li>
-    <li class="breadcrumb-item active"> Elemental Resistant Armorset </li>
+    <li class="breadcrumb-item active"><a href="{% url 'elements' %}">Elements</a></li>
+    <li class="breadcrumb-item active"> Elemental Resistant Armorset</li>
 {% endblock %}
 
 {% block content %}
-{% if result %}
+    {% if result %}
 
-    <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Hunters owners of an elemental resistant armorset</h3>
-                <table class="table table-head-fixed text-nowrap">
-                  <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Experience level</th>
-                        <th>Money</th>
-                        <th>Rank</th>
-                        <th>Inventories</th>
-                        <th>Armorset</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for hunter in result %}
-                    <tr>
-                        <td>{{hunter.0.id}}</td>
-                        <td>{{hunter.0.name}}</td>
-                        <td>{{hunter.0.experience_level}}</td>
-                        <td>{{hunter.0.money}}</td>
-                        <td>{{hunter.0.rank}}</td>
-                        <td><a href="/Monster_Hunter/inventory/{{ hunter.0.id }}" > Inventory </a></td>
-                        <td>
-                        {% for armor in hunter.1 %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Hunters owners of an elemental resistant armorset</h3>
+                        <table class="table table-head-fixed text-nowrap">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Experience level</th>
+                                <th>Money</th>
+                                <th>Rank</th>
+                                <th>Inventories</th>
+                                <th>Armorset</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for hunter in result %}
+                                <tr>
+                                    <td>{{ hunter.0.id }}</td>
+                                    <td>{{ hunter.0.name }}</td>
+                                    <td>{{ hunter.0.experience_level }}</td>
+                                    <td>{{ hunter.0.money }}</td>
+                                    <td>{{ hunter.0.rank }}</td>
+                                    <td><a href="/Monster_Hunter/inventory/{{ hunter.0.id }}"> Inventory </a></td>
+                                    <td>
+                                        {% for armor in hunter.1 %}
 
-                            <div>
-                            <a href="/Monster_Hunter/objects/details/{{ armor.object.id }}" > {{ armor.object.name }} </a>
-                            </div>
-                        {% endfor %}
-                        </td>
-                    </tr>
-                  {% endfor %}
+                                            <div>
+                                                <a href="/Monster_Hunter/objects/details/{{ armor.object.id }}"> {{ armor.object.name }} </a>
+                                            </div>
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
 
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
-            <!-- /.card -->
-          </div>
         </div>
-{% else %}
-    <p>There are no hunters with armorsets that at least one piece resist one of each elements.</p>
-{% endif %}
+    {% else %}
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <p>There are no hunters with armorsets that at least one piece resist one of each
+                                elements.</p>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+
+    {% endif %}
 
 {% endblock content %}
