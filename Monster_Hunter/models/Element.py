@@ -24,8 +24,8 @@ class Elemental_defense(models.Model):
         if(self.value <  0):
             raise ValidationError("Value field must be nonnegative")
 
-    class Meta:
-         unique_together = [["armor", "element"]]
+    # class Meta:
+    #      unique_together = [["armor", "element"]]
 
 class Elemental_attack(models.Model):
     weapon = models.ForeignKey(Weapon, on_delete=models.CASCADE)
@@ -56,5 +56,5 @@ class Elemental_resistance(models.Model):
 
     class Meta:
         ordering = ['monster_id']
-        unique_together = [["monster", "element"]]
+        unique_together = [["monster_id", "element_id"]]
 
